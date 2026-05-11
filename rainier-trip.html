@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Girls Trip · Mount Rainier & North Cascades · June 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1e3a2f;
+    --pine: #2d5a3d;
+    --sage: #7a9e7e;
+    --mist: #c8d8c0;
+    --snow: #f4f0eb;
+    --glacier: #8ab4c0;
+    --stone: #6b6560;
+    --gold: #c4993a;
+    --cream: #faf7f2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--forest);
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    background: linear-gradient(160deg, #0f2419 0%, #1e3a2f 40%, #2d5a3d 70%, #4a7a5a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 80%, rgba(138,180,192,0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 20% 20%, rgba(196,153,58,0.08) 0%, transparent 60%);
+  }
+
+  /* Mountain SVG silhouette */
+  .mountain-silhouette {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 55%;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+  }
+
+  .trip-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 400;
+    color: var(--snow);
+    line-height: 1.05;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--mist);
+  }
+
+  .hero-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(200,216,192,0.8);
+    letter-spacing: 0.1em;
+    margin-top: 1.2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .meta-item {
+    text-align: center;
+  }
+
+  .meta-item .label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .meta-item .value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--snow);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.2s;
+  }
+
+  .scroll-hint span {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--sage), transparent);
+    animation: scrollPulse 1.8s ease-in-out infinite;
+  }
+
+  /* OVERVIEW STRIP */
+  .overview-strip {
+    background: var(--forest);
+    color: var(--snow);
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .overview-item .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+
+  .overview-item .desc {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-top: 0.4rem;
+    display: block;
+  }
+
+  /* MAIN CONTENT */
+  .content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  /* SECTION HEADERS */
+  .section-header {
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .section-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--mist);
+  }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--sage);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--forest);
+  }
+
+  /* DAY CARDS */
+  .day-card {
+    margin-bottom: 3.5rem;
+    background: white;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 2px 24px rgba(30,58,47,0.07);
+    border-left: 4px solid var(--pine);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .day-card:hover {
+    box-shadow: 0 6px 36px rgba(30,58,47,0.13);
+  }
+
+  .day-header {
+    background: var(--forest);
+    color: var(--snow);
+    padding: 1.4rem 2rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+  }
+
+  .day-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .day-info .day-date {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    display: block;
+  }
+
+  .day-info .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--snow);
+  }
+
+  .day-body {
+    padding: 2rem;
+  }
+
+  /* STOPS */
+  .stop {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0 1.2rem;
+    margin-bottom: 1.8rem;
+    position: relative;
+  }
+
+  .stop:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 48px;
+    bottom: -1.8rem;
+    width: 1px;
+    background: var(--mist);
+    transform: translateX(-50%);
+  }
+
+  .stop-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .stop-icon.hotel { background: var(--forest); }
+  .stop-icon.hike { background: var(--pine); }
+  .stop-icon.viewpoint { background: var(--glacier); }
+  .stop-icon.drive { background: var(--stone); }
+  .stop-icon.food { background: var(--gold); }
+  .stop-icon.waterfall { background: #5a8fa0; }
+
+  .stop-content {}
+
+  .stop-time {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.2rem;
+  }
+
+  .stop-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 0.3rem;
+  }
+
+  .stop-desc {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--stone);
+  }
+
+  .stop-tag {
+    display: inline-block;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    margin-top: 0.5rem;
+    font-weight: 500;
+  }
+
+  .tag-easy { background: #e8f4e8; color: var(--pine); }
+  .tag-paved { background: #e8f0f4; color: #3a6278; }
+  .tag-pregnant { background: #fdf3e3; color: #8a6020; }
+  .tag-scenic { background: #f0ede8; color: var(--stone); }
+  .tag-required { background: #fff3f3; color: #8a3030; }
+
+  /* HOTEL SECTION */
+  .hotels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .hotel-card {
+    background: white;
+    border-radius: 2px;
+    padding: 2rem;
+    box-shadow: 0 2px 20px rgba(30,58,47,0.07);
+    border-top: 3px solid var(--gold);
+  }
+
+  .hotel-nights {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.5rem;
+  }
+
+  .hotel-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 0.2rem;
+  }
+
+  .hotel-location {
+    font-size: 0.82rem;
+    color: var(--stone);
+    margin-bottom: 1rem;
+  }
+
+  .hotel-desc {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--stone);
+    margin-bottom: 1rem;
+  }
+
+  .hotel-rate {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--pine);
+    font-weight: 700;
+  }
+
+  .hotel-rate span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--stone);
+  }
+
+  /* MAP SECTION */
+  .map-section {
+    background: var(--forest);
+    color: var(--snow);
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  .map-section .section-label { color: var(--sage); }
+  .map-section .section-title { color: var(--snow); }
+
+  .map-section .section-header::after {
+    background: rgba(200,216,192,0.2);
+  }
+
+  .map-wrapper {
+    max-width: 900px;
+    margin: 2rem auto 0;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 12px 60px rgba(0,0,0,0.4);
+    height: 520px;
+  }
+
+  .map-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  /* NOTES */
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+
+  .note-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 2px;
+    box-shadow: 0 2px 16px rgba(30,58,47,0.06);
+    border-left: 3px solid var(--sage);
+  }
+
+  .note-icon { font-size: 1.5rem; margin-bottom: 0.7rem; display: block; }
+  .note-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--forest);
+    margin-bottom: 0.5rem;
+  }
+  .note-text {
+    font-size: 0.83rem;
+    line-height: 1.6;
+    color: var(--stone);
+  }
+
+  /* PREGNANCY NOTE */
+  .pregnancy-banner {
+    background: #fdf8ef;
+    border: 1px solid #e8d5a0;
+    border-radius: 2px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .pregnancy-banner .icon { font-size: 1.8rem; flex-shrink: 0; }
+  .pregnancy-banner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: #7a5a10;
+    margin-bottom: 0.4rem;
+  }
+  .pregnancy-banner p {
+    font-size: 0.83rem;
+    line-height: 1.6;
+    color: #8a7040;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--forest);
+    color: var(--sage);
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+  }
+
+  footer strong {
+    color: var(--snow);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .day-header { flex-direction: column; gap: 0.3rem; }
+    .day-num { font-size: 1.8rem; }
+    .overview-strip { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="mountain-silhouette" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="mtGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#2d5a3d" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#1e3a2f" stop-opacity="1"/>
+      </linearGradient>
+      <linearGradient id="snowGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#e8f0ec" stop-opacity="0.95"/>
+        <stop offset="100%" stop-color="#c8d8c0" stop-opacity="0.7"/>
+      </linearGradient>
+    </defs>
+    <!-- Background ridge -->
+    <path d="M0 350 L180 200 L300 240 L420 170 L560 260 L700 180 L840 230 L980 150 L1100 200 L1220 170 L1360 220 L1440 190 L1440 400 L0 400 Z" fill="url(#mtGrad)" opacity="0.5"/>
+    <!-- Main Rainier peak -->
+    <path d="M1440 400 L0 400 L0 320 L150 280 L300 300 L480 260 L600 320 L680 180 L720 100 L760 80 L800 130 L850 190 L920 230 L1050 260 L1200 290 L1350 270 L1440 280 Z" fill="url(#mtGrad)"/>
+    <!-- Snow cap -->
+    <path d="M720 100 L760 80 L800 130 L780 150 L760 120 L740 145 Z" fill="url(#snowGrad)" opacity="0.8"/>
+    <!-- Foreground trees -->
+    <g fill="#0f2419" opacity="0.9">
+      <path d="M0 400 L0 360 L20 360 L20 340 L30 340 L30 360 L50 360 L50 400 Z"/>
+      <path d="M10 360 L20 330 L30 360 Z"/>
+      <path d="M5 350 L20 310 L35 350 Z"/>
+      <path d="M80 400 L80 355 L95 355 L95 335 L105 335 L105 355 L120 355 L120 400 Z"/>
+      <path d="M88 355 L95 320 L103 355 Z"/>
+      <path d="M1320 400 L1320 355 L1335 355 L1335 335 L1345 335 L1345 355 L1360 355 L1360 400 Z"/>
+      <path d="M1328 355 L1335 320 L1343 355 Z"/>
+      <path d="M1390 400 L1390 360 L1405 360 L1405 340 L1415 340 L1415 360 L1430 360 L1430 400 Z"/>
+      <path d="M1398 360 L1405 325 L1413 360 Z"/>
+    </g>
+  </svg>
+
+  <div class="hero-content">
+    <p class="trip-label">Girls Trip · Pacific Northwest</p>
+    <h1>Mount Rainier<br><em>&amp; North Cascades</em></h1>
+    <p class="hero-subtitle">June 4 – 7, 2026</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="label">Days</span>
+        <span class="value">4</span>
+      </div>
+      <div class="meta-item">
+        <span class="label">Parks</span>
+        <span class="value">2</span>
+      </div>
+      <div class="meta-item">
+        <span class="label">Fly In/Out</span>
+        <span class="value">SEA</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- OVERVIEW STRIP -->
+<div class="overview-strip">
+  <div class="overview-item">
+    <span class="num">2</span>
+    <span class="desc">Nights in Ashford</span>
+  </div>
+  <div class="overview-item">
+    <span class="num">1</span>
+    <span class="desc">Night in Seattle</span>
+  </div>
+  <div class="overview-item">
+    <span class="num">6+</span>
+    <span class="desc">Scenic Stops</span>
+  </div>
+  <div class="overview-item">
+    <span class="num">0</span>
+    <span class="desc">Strenuous Hikes</span>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="content">
+
+  <!-- PREGNANCY NOTE -->
+  <div class="pregnancy-banner">
+    <span class="icon">🤰</span>
+    <div>
+      <h3>Pregnancy-Friendly Itinerary</h3>
+      <p>All hikes on this trip are paved, flat, or low-elevation — specifically chosen so everyone can participate comfortably. Nisqually Vista Loop at Paradise and Rainy Lake Trail are both ranger-recommended for pregnant visitors and wheelchair users. Paradise sits at 5,400 ft elevation — drink extra water and go slowly. Consult your OB before the trip with any questions.</p>
+    </div>
+  </div>
+
+  <!-- HOTELS -->
+  <div class="section-header">
+    <div>
+      <span class="section-label">Where we're staying</span>
+      <h2 class="section-title">Accommodations</h2>
+    </div>
+  </div>
+
+  <div class="hotels-grid">
+    <div class="hotel-card">
+      <p class="hotel-nights">Nights 1 & 2 · Jun 4–6</p>
+      <h3 class="hotel-name">Ashford, WA</h3>
+      <p class="hotel-location">📍 Gateway to Mt. Rainier · 7 min from Nisqually Entrance</p>
+      <p class="hotel-desc">Cabin or vacation rental in Ashford — the closest town to Paradise. Best base for an early start into the park before crowds arrive. Check Airbnb or VRBO for options sleeping 4+.</p>
+      <p class="hotel-rate">TBD <span>/ night · confirm booking</span></p>
+    </div>
+    <div class="hotel-card">
+      <p class="hotel-nights">Night 3 · Jun 6</p>
+      <h3 class="hotel-name">Seattle, WA</h3>
+      <p class="hotel-location">📍 Capitol Hill, Pike Place, or South Lake Union area</p>
+      <p class="hotel-desc">One night in Seattle after the North Cascades drive day. Pick something central — walkable to dinner and easy to reach SEA the next morning. Lots of great options in the $200–400/night range.</p>
+      <p class="hotel-rate">~$250–400 <span>/ night · book separately</span></p>
+    </div>
+  </div>
+
+  <!-- ITINERARY -->
+  <div class="section-header">
+    <div>
+      <span class="section-label">Day by day</span>
+      <h2 class="section-title">The Itinerary</h2>
+    </div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-num">01</span>
+      <div class="day-info">
+        <span class="day-date">Thursday, June 4</span>
+        <span class="day-title">Fly In → Longmire → Ashford</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="stop">
+        <div class="stop-icon drive">✈️</div>
+        <div class="stop-content">
+          <p class="stop-time">Morning / Afternoon</p>
+          <p class="stop-name">Land at SEA · Pick Up Cars</p>
+          <p class="stop-desc">Fly into Seattle-Tacoma International. Grab rental cars and head south on I-5 → Hwy 7 → Hwy 706. ~2 hours to Ashford.</p>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-icon hike">🌲</div>
+        <div class="stop-content">
+          <p class="stop-time">Afternoon</p>
+          <p class="stop-name">Longmire · Trail of the Shadows</p>
+          <p class="stop-desc">First taste of the park at low elevation (2,762 ft). Flat, easy loop past historic homesteads and hot springs. Stop at the Wilderness Information Center for trail maps and conditions.</p>
+          <span class="stop-tag tag-easy">Easy</span>
+          <span class="stop-tag tag-pregnant">Pregnancy-friendly</span>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-icon hotel">🏡</div>
+        <div class="stop-content">
+          <p class="stop-time">Evening</p>
+          <p class="stop-name">Check In · Ashford</p>
+          <p class="stop-desc">Settle in, cook dinner or pick up food from Ashford. Early bedtime — tomorrow is the big Rainier day and you want to arrive at Paradise by 9am.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-num">02</span>
+      <div class="day-info">
+        <span class="day-date">Friday, June 5</span>
+        <span class="day-title">Full Day at Mount Rainier · Paradise</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="stop">
+        <div class="stop-icon drive">🚗</div>
+        <div class="stop-content">
+          <p class="stop-time">8:00 AM — Leave Ashford</p>
+          <p class="stop-name">Head into the Park</p>
+          <p class="stop-desc">Leave by 8am sharp to beat parking crowds. $35/vehicle entry fee (7-day pass). America the Beautiful pass accepted.</p>
+          <span class="stop-tag tag-required">⚠️ Arrive Paradise before 9:30am</span>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-icon waterfall">💧</div>
+        <div class="stop-content">
+          <p class="stop-time">8:30 AM</p>
+          <p class="stop-name">Narada Falls</p>
+          <p class="stop-desc">Quick roadside stop en route to Paradise. Walk 0.2 miles to the base of this roaring waterfall — gushing from snowmelt in June. Great photo stop for everyone.</p>
+          <span class="stop-tag tag-easy">Easy · 20 min</span>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-icon hike">🏔️</div>
+        <div class="stop-content">
+          <p class="stop-time">9:30 AM – 1:00 PM</p>
+          <p class="stop-name">Paradise · Nisqually Vista Loop</p>
+          <p class="stop-desc">The centerpiece of the trip. Park at the Jackson Visitor Center and do the 1.2-mile Nisqually Vista Loop — entirely paved, minimal elevation change, with jaw-dropping face-on views of Mount Rainier and the Nisqually Glacier. Those who want more can extend to Myrtle Falls (paved, +1 mile round trip). Picnic lunch near the visitor center.</p>
+          <span class="stop-tag tag-paved">Fully paved</span>
+          <span class="stop-tag tag-pregnant">Pregnancy-friendly</span>
+          <span class="stop-tag tag-easy">1.2 mi loop</span>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-icon waterfall">🌉</div>
+        <div class="stop-content">
+          <p class="stop-time">1:30 PM</p>
+          <p class="stop-name">Christine Falls</p>
+          <p class="stop-desc">Roadside stop on the drive back out. A 60-foot waterfall framed by a beautiful historic stone arch bridge. Park and walk a minute to the overlook — one of the most photogenic spots in the park.</p>
+          <span class="stop-tag tag-easy">2-min walk</span>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-icon hotel">🏡</div>
+        <div class="stop-content">
+          <p class="stop-time">Afternoon / Evening</p>
+          <p class="stop-name">Back to Ashford · Rest & Dinner</p>
+          <p class="stop-desc">Head back to the cabin for a relaxed afternoon. Dinner in Ashford or cook in. Get to bed at a reasonable hour — tomorrow is a long and beautiful drive day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-num">03</span>
+      <div class="day-info">
+        <span class="day-date">Saturday, June 6</span>
+        <span class="day-title">North Cascades Scenic Drive → Seattle</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="stop">
+        <div class="stop-icon drive">🚗</div>
+        <div class="stop-content">
+          <p class="stop-time">8:00 AM — Leave Ashford</p>
+          <p class="stop-name">Drive North → Hwy 410 → I-5 → Hwy 20</p>
+          <p class="stop-desc">Long drive day — but the scenery never stops. Route: Ashford → Hwy 410 north → I-5 north → Hwy 20 east into North Cascades. ~3 hours to first park stop. <strong>Fill up gas in Marblemount</strong> — no gas for 75 miles after that. Pack snacks and lunch before Marblemount.</p>
+          <span class="stop-tag tag-required">⚠️ Gas up in Marblemount</span>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-icon viewpoint">🏔️</div>
+        <div class="stop-content">
+          <p class="stop-time">~11:00 AM</p>
+          <p class="stop-name">North Cascades Visitor Center · Newhalem</p>
+          <p class="stop-desc">First stop inside the park. A 200-foot paved path leads to an overlook of the dramatic Picket Range. Browse exhibits about the park's 300+ glaciers. Good bathroom break.</p>
+          <span class="stop-tag tag-easy">20 min stop</span>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-icon waterfall">💧</div>
+        <div class="stop-content">
+          <p class="stop-time">~11:30 AM</p>
+          <p class="stop-name">Gorge Creek Falls</p>
+          <p class="stop-desc">Short paved path right off the highway to a dramatic waterfall viewpoint. One of the most accessible waterfall stops in the Cascades — worth a quick 15-minute pull-off.</p>
+          <span class="stop-tag tag-easy">15 min</span>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-icon viewpoint">🏞️</div>
+        <div class="stop-content">
+          <p class="stop-time">~12:00 PM · THE HIGHLIGHT</p>
+          <p class="stop-name">Diablo Lake Overlook</p>
+          <p class="stop-desc">The visual centerpiece of the North Cascades. Glacier rock flour suspended in the water turns this lake a brilliant, almost unreal turquoise. Large parking lot with restrooms. Spend 30–45 minutes here — it's the photo moment of the day. The color is most vivid under midday sun, which works perfectly with your timing.</p>
+          <span class="stop-tag tag-scenic">Must-see</span>
+          <span class="stop-tag tag-easy">No hiking needed</span>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-icon viewpoint">🏔️</div>
+        <div class="stop-content">
+          <p class="stop-time">~12:45 PM</p>
+          <p class="stop-name">Ross Lake Overlook</p>
+          <p class="stop-desc">A quick 5-minute pull-off just east of Diablo. Views stretching north toward Canada across this long, narrow reservoir. Jack Kerouac's famous Desolation Peak is visible in the distance.</p>
+          <span class="stop-tag tag-easy">5 min stop</span>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-icon hike">🥾</div>
+        <div class="stop-content">
+          <p class="stop-time">~2:00 PM</p>
+          <p class="stop-name">Rainy Lake Trail · Rainy Pass</p>
+          <p class="stop-desc">The one "hike" of the day — and it's genuinely beautiful. A 1-mile wheelchair-accessible paved trail through old-growth forest to a stunning alpine lake set in a granite cirque with waterfalls cascading down the cliffs. 2 miles round trip, virtually no elevation gain, about 45 minutes. This is the North Cascades' equivalent of Nisqually Vista.</p>
+          <span class="stop-tag tag-paved">Fully paved</span>
+          <span class="stop-tag tag-pregnant">Pregnancy-friendly</span>
+          <span class="stop-tag tag-easy">2 mi · ~45 min</span>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-icon viewpoint">⛰️</div>
+        <div class="stop-content">
+          <p class="stop-time">~3:00 PM</p>
+          <p class="stop-name">Washington Pass Overlook</p>
+          <p class="stop-desc">Final stop before descending west toward Seattle. A short paved path from the parking area delivers spectacular views of Liberty Bell Mountain and the Early Winters Spires at 5,477 ft elevation — the highest point on the drive. Absolutely worth 15 minutes.</p>
+          <span class="stop-tag tag-scenic">Panoramic</span>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-icon hotel">🏙️</div>
+        <div class="stop-content">
+          <p class="stop-time">~6:00 – 7:00 PM</p>
+          <p class="stop-name">Arrive Seattle · Check In</p>
+          <p class="stop-desc">Head back west on Hwy 20 to I-5 south into Seattle (~2 hours from Washington Pass). Check into your hotel, freshen up, and find a great dinner spot. Capitol Hill, Pike Place area, and Ballard are all solid bets.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-num">04</span>
+      <div class="day-info">
+        <span class="day-date">Sunday, June 7</span>
+        <span class="day-title">Seattle Morning → Fly Home</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="stop">
+        <div class="stop-icon food">☕</div>
+        <div class="stop-content">
+          <p class="stop-time">Morning</p>
+          <p class="stop-name">Morning in Seattle</p>
+          <p class="stop-desc">Grab breakfast, wander Pike Place Market, or explore Capitol Hill boutiques depending on your flight time. SEA is about 30 minutes from downtown — allow more time on weekends.</p>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-icon drive">✈️</div>
+        <div class="stop-content">
+          <p class="stop-time">Afternoon</p>
+          <p class="stop-name">Fly Home from SEA</p>
+          <p class="stop-desc">Return rental cars at the airport and head home with very full memory cards and very tired legs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRACTICAL NOTES -->
+  <div class="section-header" style="margin-top: 1rem;">
+    <div>
+      <span class="section-label">Before you go</span>
+      <h2 class="section-title">Good to Know</h2>
+    </div>
+  </div>
+
+  <div class="notes-grid">
+    <div class="note-card">
+      <span class="note-icon">🎫</span>
+      <h4 class="note-title">Park Entry</h4>
+      <p class="note-text">$35/vehicle for a 7-day Mt. Rainier pass. North Cascades National Park has <strong>no entry fee</strong>. America the Beautiful annual pass ($80) covers both — worthwhile if anyone plans more park visits this year.</p>
+    </div>
+    <div class="note-card">
+      <span class="note-icon">⛽</span>
+      <h4 class="note-title">Gas on Day 3</h4>
+      <p class="note-text">Fill up in <strong>Marblemount</strong> before heading east on Hwy 20. No gas stations for 75 miles between Marblemount and Mazama. Don't skip this.</p>
+    </div>
+    <div class="note-card">
+      <span class="note-icon">🌤️</span>
+      <h4 class="note-title">Weather</h4>
+      <p class="note-text">Diablo Lake's turquoise is muted on cloudy days — aim to arrive at the overlook around midday on a clear day. Pack layers for all days. Weather changes quickly at elevation in the Cascades.</p>
+    </div>
+    <div class="note-card">
+      <span class="note-icon">🅿️</span>
+      <h4 class="note-title">Parking at Paradise</h4>
+      <p class="note-text">No timed entry required in 2026, but lots fill fast. <strong>Arrive before 9:30am</strong> on the Paradise day. After 10am on weekends, expect to wait or park along the road.</p>
+    </div>
+    <div class="note-card">
+      <span class="note-icon">🚗</span>
+      <h4 class="note-title">Cars</h4>
+      <p class="note-text">Rent 1–2 cars at SEA. All roads on this itinerary are standard paved highways — no 4WD or high clearance needed. A standard SUV is comfortable for the mountain passes.</p>
+    </div>
+    <div class="note-card">
+      <span class="note-icon">📡</span>
+      <h4 class="note-title">Cell Service</h4>
+      <p class="note-text">Cell service is limited to nonexistent inside both parks. Download offline Google Maps for the route and save this page before you go. The NPS app has offline park maps too.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- MAP SECTION -->
+<section class="map-section">
+  <div style="max-width:900px; margin:0 auto;">
+    <div class="section-header" style="justify-content:center; text-align:left;">
+      <div>
+        <span class="section-label" style="color:var(--sage)">Route overview</span>
+        <h2 class="section-title" style="color:var(--snow)">The Map</h2>
+      </div>
+    </div>
+    <p style="color:rgba(200,216,192,0.7); font-size:0.85rem; margin-bottom:1.5rem; text-align:left;">Day 1–2: Ashford/Mt. Rainier area · Day 3: North Cascades Hwy 20 drive → Seattle · Day 4: Fly home from SEA</p>
+    <div class="map-wrapper">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m76!1m12!1m3!1d1385053.7!2d-121.8!3d47.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m61!3e0!4m5!1s0x549052a98c2bc3e3%3A0xb2f64f75b3a9c130!2sSeaTac%20Airport!3m2!1d47.4502!2d-122.3088!4m5!1s0x5490da9a7e43b8db%3A0x5c9c38d0a28d23fd!2sLongmire%2C%20WA!3m2!1d46.7503!2d-121.8122!4m5!1s0x5490da9a9bd4b4e1%3A0x5c9c38d0a28d23fd!2sAshford%2C%20WA%2098304!3m2!1d46.7595!2d-121.9897!4m5!1s0x5490d8b72d89c305%3A0x18fa00a98a748c2b!2sParadise%2C%20Mount%20Rainier%20National%20Park!3m2!1d46.7865!2d-121.7356!4m5!1s0x548df5d3a1e3e5d7%3A0x4e3c2e57a3b2f6a2!2sNewhalem%2C%20WA!3m2!1d48.6684!2d-121.2425!4m5!1s0x548e01a48d9b2d2f%3A0x5f2b3e5a6c1d7e8a!2sDiablo%20Lake%20Overlook%2C%20WA!3m2!1d48.7165!2d-121.1399!4m5!1s0x548e094c4d9d9d9d%3A0x9d9d9d9d9d9d9d9d!2sRainy%20Pass%2C%20WA!3m2!1d48.5150!2d-120.7355!4m5!1s0x548e0c3a5f6b3e1f%3A0x3e1f5f6b3e1f5f6b!2sWashington%20Pass%20Overlook%2C%20WA!3m2!1d48.5167!2d-120.6559!4m5!1s0x5490781c62da0a0f%3A0x37e40f4c36d2d1ad!2sSeattle%2C%20WA!3m2!1d47.6062!2d-122.3321!5e0!3m2!1sen!2sus!4v1715000000000!5m2!1sen!2sus"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Girls Trip · Mount Rainier &amp; North Cascades · June 2026</strong><br>
+  <span style="margin-top:0.5rem; display:block;">Pack layers · Start early · Leave no trace · Have the best time 🌲</span>
+</footer>
+
+</body>
+</html>
