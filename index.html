@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Girls Trip · Mount Rainier & North Cascades · June 2026</title>
+<title>Girls Trip · Olympic Peninsula · June 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -13,10 +13,12 @@
     --sage: #7a9e7e;
     --mist: #c8d8c0;
     --snow: #f4f0eb;
-    --glacier: #8ab4c0;
+    --ocean: #4a7fa0;
+    --seafoam: #8ab4c0;
     --stone: #6b6560;
     --gold: #c4993a;
     --cream: #faf7f2;
+    --rain: #5a7fa0;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,7 +35,7 @@
     position: relative;
     height: 100vh;
     min-height: 600px;
-    background: linear-gradient(160deg, #0f2419 0%, #1e3a2f 40%, #2d5a3d 70%, #4a7a5a 100%);
+    background: linear-gradient(160deg, #0a1f2e 0%, #1a3548 40%, #1e3a2f 70%, #2d5a3d 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,18 +49,17 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 80% 60% at 50% 80%, rgba(138,180,192,0.15) 0%, transparent 70%),
-      radial-gradient(ellipse 60% 40% at 20% 20%, rgba(196,153,58,0.08) 0%, transparent 60%);
+      radial-gradient(ellipse 80% 60% at 50% 80%, rgba(74,127,160,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 20% 20%, rgba(196,153,58,0.07) 0%, transparent 60%);
   }
 
-  /* Mountain SVG silhouette */
-  .mountain-silhouette {
+  .hero-silhouette {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
-    height: 55%;
+    height: 50%;
   }
 
   .hero-content {
@@ -68,7 +69,6 @@
   }
 
   .trip-label {
-    font-family: 'DM Sans', sans-serif;
     font-size: 0.72rem;
     font-weight: 500;
     letter-spacing: 0.3em;
@@ -81,7 +81,7 @@
 
   .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 400;
     color: var(--snow);
     line-height: 1.05;
@@ -96,7 +96,6 @@
   }
 
   .hero-subtitle {
-    font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
     font-weight: 300;
     color: rgba(200,216,192,0.8);
@@ -113,10 +112,6 @@
     margin-top: 2.5rem;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.8s;
-  }
-
-  .meta-item {
-    text-align: center;
   }
 
   .meta-item .label {
@@ -228,6 +223,123 @@
     color: var(--forest);
   }
 
+  /* WEATHER SECTION */
+  .weather-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 4rem;
+  }
+
+  .weather-card {
+    background: white;
+    border-radius: 2px;
+    padding: 1.6rem;
+    box-shadow: 0 2px 20px rgba(30,58,47,0.07);
+    border-top: 3px solid var(--ocean);
+  }
+
+  .weather-day {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.4rem;
+  }
+
+  .weather-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--forest);
+    margin-bottom: 0.8rem;
+  }
+
+  .weather-temps {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .temp-item .temp-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--forest);
+    line-height: 1;
+  }
+
+  .temp-item .temp-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  .weather-desc {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--stone);
+    margin-bottom: 0.8rem;
+  }
+
+  .weather-icon { font-size: 1.8rem; margin-bottom: 0.6rem; display: block; }
+
+  /* WHAT TO WEAR */
+  .wear-box {
+    background: #f5f8f5;
+    border-radius: 2px;
+    padding: 1rem 1.2rem;
+    margin-top: 0.8rem;
+  }
+
+  .wear-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .wear-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .wear-tag {
+    font-size: 0.72rem;
+    background: white;
+    border: 1px solid var(--mist);
+    color: var(--forest);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+  }
+
+  /* PREGNANCY NOTE */
+  .pregnancy-banner {
+    background: #fdf8ef;
+    border: 1px solid #e8d5a0;
+    border-radius: 2px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .pregnancy-banner .icon { font-size: 1.8rem; flex-shrink: 0; }
+  .pregnancy-banner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: #7a5a10;
+    margin-bottom: 0.4rem;
+  }
+  .pregnancy-banner p {
+    font-size: 0.83rem;
+    line-height: 1.6;
+    color: #8a7040;
+  }
+
   /* DAY CARDS */
   .day-card {
     margin-bottom: 3.5rem;
@@ -275,9 +387,7 @@
     color: var(--snow);
   }
 
-  .day-body {
-    padding: 2rem;
-  }
+  .day-body { padding: 2rem; }
 
   /* STOPS */
   .stop {
@@ -312,13 +422,12 @@
   }
 
   .stop-icon.hotel { background: var(--forest); }
-  .stop-icon.hike { background: var(--pine); }
-  .stop-icon.viewpoint { background: var(--glacier); }
+  .stop-icon.hike  { background: var(--pine); }
+  .stop-icon.viewpoint { background: var(--ocean); }
   .stop-icon.drive { background: var(--stone); }
-  .stop-icon.food { background: var(--gold); }
+  .stop-icon.food  { background: var(--gold); }
+  .stop-icon.beach { background: var(--seafoam); }
   .stop-icon.waterfall { background: #5a8fa0; }
-
-  .stop-content {}
 
   .stop-time {
     font-size: 0.65rem;
@@ -350,74 +459,18 @@
     padding: 0.2rem 0.6rem;
     border-radius: 20px;
     margin-top: 0.5rem;
+    margin-right: 0.3rem;
     font-weight: 500;
   }
 
-  .tag-easy { background: #e8f4e8; color: var(--pine); }
-  .tag-paved { background: #e8f0f4; color: #3a6278; }
+  .tag-easy     { background: #e8f4e8; color: var(--pine); }
+  .tag-paved    { background: #e8f0f4; color: #3a6278; }
   .tag-pregnant { background: #fdf3e3; color: #8a6020; }
-  .tag-scenic { background: #f0ede8; color: var(--stone); }
+  .tag-scenic   { background: #f0ede8; color: var(--stone); }
   .tag-required { background: #fff3f3; color: #8a3030; }
+  .tag-book     { background: #f0f0ff; color: #4040a0; }
 
-  /* HOTEL SECTION */
-  .hotels-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 4rem;
-  }
-
-  .hotel-card {
-    background: white;
-    border-radius: 2px;
-    padding: 2rem;
-    box-shadow: 0 2px 20px rgba(30,58,47,0.07);
-    border-top: 3px solid var(--gold);
-  }
-
-  .hotel-nights {
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--sage);
-    margin-bottom: 0.5rem;
-  }
-
-  .hotel-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--forest);
-    margin-bottom: 0.2rem;
-  }
-
-  .hotel-location {
-    font-size: 0.82rem;
-    color: var(--stone);
-    margin-bottom: 1rem;
-  }
-
-  .hotel-desc {
-    font-size: 0.85rem;
-    line-height: 1.6;
-    color: var(--stone);
-    margin-bottom: 1rem;
-  }
-
-  .hotel-rate {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    color: var(--pine);
-    font-weight: 700;
-  }
-
-  .hotel-rate span {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: var(--stone);
-  }
-
+  /* MAP LINK */
   .day-map-link {
     padding: 1rem 2rem 1.5rem;
     border-top: 1px solid var(--mist);
@@ -444,36 +497,26 @@
     border-color: var(--forest);
   }
 
-  /* MAP SECTION */
-  .map-section {
-    background: var(--forest);
-    color: var(--snow);
-    padding: 5rem 2rem;
-    text-align: center;
+  /* HOTELS */
+  .hotels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
   }
 
-  .map-section .section-label { color: var(--sage); }
-  .map-section .section-title { color: var(--snow); }
-
-  .map-section .section-header::after {
-    background: rgba(200,216,192,0.2);
+  .hotel-card {
+    background: white;
+    border-radius: 2px;
+    padding: 2rem;
+    box-shadow: 0 2px 20px rgba(30,58,47,0.07);
+    border-top: 3px solid var(--gold);
   }
 
-  .map-wrapper {
-    max-width: 900px;
-    margin: 2rem auto 0;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 0 12px 60px rgba(0,0,0,0.4);
-    height: 520px;
-  }
-
-  .map-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
-  }
+  .hotel-nights { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.5rem; }
+  .hotel-name   { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--forest); margin-bottom: 0.2rem; }
+  .hotel-location { font-size: 0.82rem; color: var(--stone); margin-bottom: 1rem; }
+  .hotel-desc   { font-size: 0.85rem; line-height: 1.6; color: var(--stone); }
 
   /* NOTES */
   .notes-grid {
@@ -491,43 +534,9 @@
     border-left: 3px solid var(--sage);
   }
 
-  .note-icon { font-size: 1.5rem; margin-bottom: 0.7rem; display: block; }
-  .note-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    color: var(--forest);
-    margin-bottom: 0.5rem;
-  }
-  .note-text {
-    font-size: 0.83rem;
-    line-height: 1.6;
-    color: var(--stone);
-  }
-
-  /* PREGNANCY NOTE */
-  .pregnancy-banner {
-    background: #fdf8ef;
-    border: 1px solid #e8d5a0;
-    border-radius: 2px;
-    padding: 1.5rem 2rem;
-    margin-bottom: 3rem;
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-  }
-
-  .pregnancy-banner .icon { font-size: 1.8rem; flex-shrink: 0; }
-  .pregnancy-banner h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    color: #7a5a10;
-    margin-bottom: 0.4rem;
-  }
-  .pregnancy-banner p {
-    font-size: 0.83rem;
-    line-height: 1.6;
-    color: #8a7040;
-  }
+  .note-icon  { font-size: 1.5rem; margin-bottom: 0.7rem; display: block; }
+  .note-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--forest); margin-bottom: 0.5rem; }
+  .note-text  { font-size: 0.83rem; line-height: 1.6; color: var(--stone); }
 
   /* FOOTER */
   footer {
@@ -539,28 +548,24 @@
     letter-spacing: 0.1em;
   }
 
-  footer strong {
-    color: var(--snow);
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-  }
+  footer strong { color: var(--snow); font-family: 'Playfair Display', serif; font-style: italic; }
 
   /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes scrollPulse {
-    0%, 100% { opacity: 0.4; transform: scaleY(1); }
-    50% { opacity: 1; transform: scaleY(1.1); }
+    0%, 100% { opacity: 0.4; }
+    50%       { opacity: 1; }
   }
 
-  /* RESPONSIVE */
   @media (max-width: 600px) {
     .day-header { flex-direction: column; gap: 0.3rem; }
-    .day-num { font-size: 1.8rem; }
+    .day-num    { font-size: 1.8rem; }
     .overview-strip { grid-template-columns: repeat(2, 1fr); }
+    .hero-meta  { gap: 1rem; }
   }
 </style>
 </head>
@@ -568,40 +573,55 @@
 
 <!-- HERO -->
 <section class="hero">
-  <svg class="mountain-silhouette" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+  <svg class="hero-silhouette" viewBox="0 0 1440 360" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <linearGradient id="mtGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#2d5a3d" stop-opacity="0.9"/>
-        <stop offset="100%" stop-color="#1e3a2f" stop-opacity="1"/>
+      <linearGradient id="treeGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1a3548" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#0a1f2e" stop-opacity="1"/>
       </linearGradient>
-      <linearGradient id="snowGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#e8f0ec" stop-opacity="0.95"/>
-        <stop offset="100%" stop-color="#c8d8c0" stop-opacity="0.7"/>
+      <linearGradient id="oceanGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#2a5a78" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#1a3548" stop-opacity="0.9"/>
       </linearGradient>
     </defs>
-    <!-- Background ridge -->
-    <path d="M0 350 L180 200 L300 240 L420 170 L560 260 L700 180 L840 230 L980 150 L1100 200 L1220 170 L1360 220 L1440 190 L1440 400 L0 400 Z" fill="url(#mtGrad)" opacity="0.5"/>
-    <!-- Main Rainier peak -->
-    <path d="M1440 400 L0 400 L0 320 L150 280 L300 300 L480 260 L600 320 L680 180 L720 100 L760 80 L800 130 L850 190 L920 230 L1050 260 L1200 290 L1350 270 L1440 280 Z" fill="url(#mtGrad)"/>
-    <!-- Snow cap -->
-    <path d="M720 100 L760 80 L800 130 L780 150 L760 120 L740 145 Z" fill="url(#snowGrad)" opacity="0.8"/>
-    <!-- Foreground trees -->
-    <g fill="#0f2419" opacity="0.9">
-      <path d="M0 400 L0 360 L20 360 L20 340 L30 340 L30 360 L50 360 L50 400 Z"/>
-      <path d="M10 360 L20 330 L30 360 Z"/>
-      <path d="M5 350 L20 310 L35 350 Z"/>
-      <path d="M80 400 L80 355 L95 355 L95 335 L105 335 L105 355 L120 355 L120 400 Z"/>
-      <path d="M88 355 L95 320 L103 355 Z"/>
-      <path d="M1320 400 L1320 355 L1335 355 L1335 335 L1345 335 L1345 355 L1360 355 L1360 400 Z"/>
-      <path d="M1328 355 L1335 320 L1343 355 Z"/>
-      <path d="M1390 400 L1390 360 L1405 360 L1405 340 L1415 340 L1415 360 L1430 360 L1430 400 Z"/>
-      <path d="M1398 360 L1405 325 L1413 360 Z"/>
+    <!-- ocean waves -->
+    <path d="M0 260 Q180 240 360 255 Q540 270 720 250 Q900 230 1080 248 Q1260 265 1440 245 L1440 360 L0 360 Z" fill="url(#oceanGrad)"/>
+    <!-- treeline left -->
+    <g fill="#0f2a1e" opacity="0.95">
+      <path d="M0 360 L0 220 L15 200 L30 220 L30 360Z"/>
+      <path d="M5 240 L15 200 L25 240Z"/>
+      <path d="M0 260 L15 215 L30 260Z"/>
+      <path d="M25 360 L25 230 L40 208 L55 230 L55 360Z"/>
+      <path d="M30 250 L40 208 L50 250Z"/>
+      <path d="M55 360 L55 240 L68 220 L81 240 L81 360Z"/>
+      <path d="M60 258 L68 220 L76 258Z"/>
+      <path d="M80 360 L80 235 L96 210 L112 235 L112 360Z"/>
+      <path d="M86 255 L96 210 L106 255Z"/>
+      <path d="M108 360 L108 245 L120 225 L132 245 L132 360Z"/>
+      <path d="M113 263 L120 225 L127 263Z"/>
     </g>
+    <!-- treeline right -->
+    <g fill="#0f2a1e" opacity="0.95">
+      <path d="M1310 360 L1310 240 L1325 218 L1340 240 L1340 360Z"/>
+      <path d="M1316 258 L1325 218 L1334 258Z"/>
+      <path d="M1338 360 L1338 230 L1355 205 L1372 230 L1372 360Z"/>
+      <path d="M1344 250 L1355 205 L1366 250Z"/>
+      <path d="M1370 360 L1370 244 L1384 222 L1398 244 L1398 360Z"/>
+      <path d="M1376 262 L1384 222 L1392 262Z"/>
+      <path d="M1396 360 L1396 236 L1412 212 L1428 236 L1428 360Z"/>
+      <path d="M1402 255 L1412 212 L1422 255Z"/>
+      <path d="M1425 360 L1425 246 L1440 224 L1440 360Z"/>
+    </g>
+    <!-- sea stacks -->
+    <rect x="600" y="210" width="18" height="150" fill="#0f2a1e" opacity="0.8" rx="2"/>
+    <rect x="660" y="230" width="14" height="130" fill="#0f2a1e" opacity="0.7" rx="2"/>
+    <rect x="720" y="200" width="22" height="160" fill="#0f2a1e" opacity="0.85" rx="2"/>
+    <rect x="780" y="220" width="16" height="140" fill="#0f2a1e" opacity="0.75" rx="2"/>
   </svg>
 
   <div class="hero-content">
-    <p class="trip-label">Girls Trip · Pacific Northwest</p>
-    <h1>Mount Rainier<br><em>&amp; North Cascades</em></h1>
+    <p class="trip-label">Girls Trip · Olympic Peninsula</p>
+    <h1>Olympic<br><em>National Park</em></h1>
     <p class="hero-subtitle">June 4 – 7, 2026</p>
     <div class="hero-meta">
       <div class="meta-item">
@@ -609,8 +629,8 @@
         <span class="value">4</span>
       </div>
       <div class="meta-item">
-        <span class="label">Parks</span>
-        <span class="value">2</span>
+        <span class="label">Base</span>
+        <span class="value">Forks</span>
       </div>
       <div class="meta-item">
         <span class="label">Fly In/Out</span>
@@ -628,20 +648,13 @@
 <div class="overview-strip">
   <div class="overview-item">
     <span class="num">2</span>
-    <span class="desc">Nights in Ashford</span>
+    <span class="desc">Nights in Forks</span>
   </div>
   <div class="overview-item">
     <span class="num">1</span>
     <span class="desc">Night in Seattle</span>
   </div>
-  <div class="overview-item">
-    <span class="num">6+</span>
-    <span class="desc">Scenic Stops</span>
-  </div>
-  <div class="overview-item">
-    <span class="num">0</span>
-    <span class="desc">Strenuous Hikes</span>
-  </div>
+
 </div>
 
 <!-- MAIN -->
@@ -652,11 +665,133 @@
     <span class="icon">🤰</span>
     <div>
       <h3>Pregnancy-Friendly Itinerary</h3>
-      <p>All hikes on this trip are paved, flat, or low-elevation — specifically chosen so everyone can participate comfortably. Nisqually Vista Loop at Paradise and Rainy Lake Trail are both ranger-recommended for pregnant visitors and wheelchair users. Paradise sits at 5,400 ft elevation — drink extra water and go slowly. Consult your OB before the trip with any questions.</p>
+      <p>Every hike on this trip is easy, short, and on well-maintained trails — specifically chosen so everyone can participate fully. Sol Duc Falls (1.6 mi, minimal gain), Hall of Mosses (0.8 mi loop), and Marymere Falls (1.8 mi round trip) are all family-friendly and suitable for second-trimester hikers. The beaches require short walks on flat or slightly uneven terrain. Consult your OB before the trip with any specific questions.</p>
     </div>
   </div>
 
-  <!-- HOTELS -->
+  <!-- WEATHER -->
+  <div class="section-header">
+    <div>
+      <span class="section-label">Pack accordingly</span>
+      <h2 class="section-title">Weather & What to Wear</h2>
+    </div>
+  </div>
+
+  <div class="weather-grid">
+    <!-- Day 1 -->
+    <div class="weather-card">
+      <p class="weather-day">Day 1 · Thu Jun 4</p>
+      <p class="weather-title">SEA → Lake Crescent → Forks</p>
+      <span class="weather-icon">🌥️</span>
+      <div class="weather-temps">
+        <div class="temp-item">
+          <span class="temp-val">62°</span>
+          <span class="temp-label">High</span>
+        </div>
+        <div class="temp-item">
+          <span class="temp-val">49°</span>
+          <span class="temp-label">Low</span>
+        </div>
+      </div>
+      <p class="weather-desc">Mild and partly cloudy typical for early June on the peninsula. Mornings cool, afternoons pleasant. Light rain possible — carry a rain jacket.</p>
+      <div class="wear-box">
+        <span class="wear-label">👗 What to Wear</span>
+        <div class="wear-items">
+          <span class="wear-tag">Light base layer</span>
+          <span class="wear-tag">Fleece or mid-layer</span>
+          <span class="wear-tag">Rain jacket</span>
+          <span class="wear-tag">Jeans or hiking pants</span>
+          <span class="wear-tag">Trail runners or waterproof shoes</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="weather-card">
+      <p class="weather-day">Day 2 · Fri Jun 5</p>
+      <p class="weather-title">Sol Duc + Rialto Beach</p>
+      <span class="weather-icon">🌦️</span>
+      <div class="weather-temps">
+        <div class="temp-item">
+          <span class="temp-val">62°</span>
+          <span class="temp-label">High</span>
+        </div>
+        <div class="temp-item">
+          <span class="temp-val">49°</span>
+          <span class="temp-label">Low</span>
+        </div>
+      </div>
+      <p class="weather-desc">Sol Duc forest stays cool and damp even on sunny days — the old-growth canopy holds moisture. Rialto Beach will be windy and cooler than inland. Dress in layers you can peel off.</p>
+      <div class="wear-box">
+        <span class="wear-label">👗 What to Wear</span>
+        <div class="wear-items">
+          <span class="wear-tag">Moisture-wicking base layer</span>
+          <span class="wear-tag">Fleece</span>
+          <span class="wear-tag">Waterproof jacket (essential in forest)</span>
+          <span class="wear-tag">Hiking pants</span>
+          <span class="wear-tag">Waterproof trail shoes or boots</span>
+          <span class="wear-tag">Extra layer for beach wind</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="weather-card">
+      <p class="weather-day">Day 3 · Sat Jun 6</p>
+      <p class="weather-title">Hoh + Ruby Beach + Hama Hama</p>
+      <span class="weather-icon">🌧️</span>
+      <div class="weather-temps">
+        <div class="temp-item">
+          <span class="temp-val">62°</span>
+          <span class="temp-label">High</span>
+        </div>
+        <div class="temp-item">
+          <span class="temp-val">49°</span>
+          <span class="temp-label">Low</span>
+        </div>
+      </div>
+      <p class="weather-desc">The Hoh gets 140+ inches of rain per year — expect damp, drizzly conditions in the morning even if it clears later. Hama Hama is fully outdoor seating, so dress for the weather there too.</p>
+      <div class="wear-box">
+        <span class="wear-label">👗 What to Wear</span>
+        <div class="wear-items">
+          <span class="wear-tag">Full waterproof jacket (must)</span>
+          <span class="wear-tag">Waterproof pants or gaiters</span>
+          <span class="wear-tag">Waterproof boots</span>
+          <span class="wear-tag">Cozy mid-layer under jacket</span>
+          <span class="wear-tag">Change of clothes for Hama Hama</span>
+          <span class="wear-tag">Hat for rain</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 4 -->
+    <div class="weather-card">
+      <p class="weather-day">Day 4 · Sun Jun 7</p>
+      <p class="weather-title">Seattle → Fly Home</p>
+      <span class="weather-icon">⛅</span>
+      <div class="weather-temps">
+        <div class="temp-item">
+          <span class="temp-val">65°</span>
+          <span class="temp-label">High</span>
+        </div>
+        <div class="temp-item">
+          <span class="temp-val">51°</span>
+          <span class="temp-label">Low</span>
+        </div>
+      </div>
+      <p class="weather-desc">Seattle in June is mild and overcast, occasionally sunny by afternoon. Perfect layering weather — not too hot, not too cold. Airport-friendly outfit.</p>
+      <div class="wear-box">
+        <span class="wear-label">👗 What to Wear</span>
+        <div class="wear-items">
+          <span class="wear-tag">Comfortable travel outfit</span>
+          <span class="wear-tag">Light jacket</span>
+          <span class="wear-tag">Sneakers</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCOMMODATIONS -->
   <div class="section-header">
     <div>
       <span class="section-label">Where we're staying</span>
@@ -667,17 +802,15 @@
   <div class="hotels-grid">
     <div class="hotel-card">
       <p class="hotel-nights">Nights 1 & 2 · Jun 4–6</p>
-      <h3 class="hotel-name">Ashford, WA</h3>
-      <p class="hotel-location">📍 Gateway to Mt. Rainier · 7 min from Nisqually Entrance</p>
-      <p class="hotel-desc">Cabin or vacation rental in Ashford — the closest town to Paradise. Best base for an early start into the park before crowds arrive. Check Airbnb or VRBO for options sleeping 4+.</p>
-      <p class="hotel-rate">TBD <span>/ night · confirm booking</span></p>
+      <h3 class="hotel-name">Airbnb · Forks, WA</h3>
+      <p class="hotel-location">📍 450 Merchants Road, Forks, WA 98331</p>
+      <p class="hotel-desc">Our home base for both park days. Forks is minutes from Rialto Beach and 45 min from Sol Duc and Hoh. Stock up on groceries in Port Angeles on the way in — Forks has a small Thriftway but limited selection. Fred Meyer in Port Angeles is the best option.</p>
     </div>
     <div class="hotel-card">
-      <p class="hotel-nights">Night 3 · Jun 6</p>
-      <h3 class="hotel-name">Seattle, WA</h3>
-      <p class="hotel-location">📍 Capitol Hill, Pike Place, or South Lake Union area</p>
-      <p class="hotel-desc">One night in Seattle after the North Cascades drive day. Pick something central — walkable to dinner and easy to reach SEA the next morning. Lots of great options in the $200–400/night range.</p>
-      <p class="hotel-rate">~$250–400 <span>/ night · book separately</span></p>
+      <p class="hotel-nights">Night 3 · Jun 6–7</p>
+      <h3 class="hotel-name">Seattle Airport Marriott</h3>
+      <p class="hotel-location">📍 Seattle-Tacoma International Airport</p>
+      <p class="hotel-desc">Right at the airport — 5 minutes to departures. Perfect for an early Sunday flight. No shuttle or rideshare stress in the morning. Check in by 5–6pm after the Hama Hama stop, then enjoy a quiet last dinner nearby.</p>
     </div>
   </div>
 
@@ -695,41 +828,53 @@
       <span class="day-num">01</span>
       <div class="day-info">
         <span class="day-date">Thursday, June 4</span>
-        <span class="day-title">Fly In → Longmire → Ashford</span>
+        <span class="day-title">SEA → Oak Table → Lake Crescent → Forks</span>
       </div>
     </div>
     <div class="day-body">
+
       <div class="stop">
         <div class="stop-icon drive">✈️</div>
         <div class="stop-content">
-          <p class="stop-time">Morning / Afternoon</p>
-          <p class="stop-name">Land at SEA · Pick Up Cars</p>
-          <p class="stop-desc">Fly into Seattle-Tacoma International. Grab rental cars and head south on I-5 → Hwy 7 → Hwy 706. ~2 hours to Ashford.</p>
+          <p class="stop-time">By 11:30 AM</p>
+          <p class="stop-name">All Land at SEA · Pick Up Rental Cars</p>
+          <p class="stop-desc">Everyone lands by 11:30am. Grab rental cars and head north then west via Hwy 101. Stop at Fred Meyer in Port Angeles for groceries — it's the best grocery run before Forks, which only has a small Thriftway.</p>
+          <span class="stop-tag tag-required">⚠️ Grocery run in Port Angeles</span>
         </div>
       </div>
+
       <div class="stop">
-        <div class="stop-icon hike">🌲</div>
+        <div class="stop-icon food">🥞</div>
         <div class="stop-content">
-          <p class="stop-time">Afternoon</p>
-          <p class="stop-name">Longmire · Trail of the Shadows</p>
-          <p class="stop-desc">First taste of the park at low elevation (2,762 ft). Flat, easy loop past historic homesteads and hot springs. Stop at the Wilderness Information Center for trail maps and conditions.</p>
-          <span class="stop-tag tag-easy">Easy</span>
+          <p class="stop-time">~1:00 PM</p>
+          <p class="stop-name">Oak Table Cafe · Sequim</p>
+          <p class="stop-desc">A beloved local brunch spot in Sequim, about 1.5 hours from SEA. Famous for their apple pancake and casual Pacific Northwest charm. Great first meal to decompress from travel. Sequim is a cute small town worth a short stroll after eating — it sits in a rare rain shadow and often gets sunshine even when the rest of the peninsula is overcast.</p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-icon waterfall">💧</div>
+        <div class="stop-content">
+          <p class="stop-time">~2:30 PM</p>
+          <p class="stop-name">Lake Crescent · Marymere Falls</p>
+          <p class="stop-desc">Stunning glacially-carved lake right on Hwy 101 — one of the most beautiful spots in the park and you barely have to leave the car to see it. Walk the Marymere Falls trail: 1.8 miles round trip through old-growth forest to a gorgeous 90-foot waterfall. Well-maintained, easy terrain, suitable for everyone. Spend about 1.5 hours here. Skip Devil's Punchbowl — it requires scrambling and is not suitable for the pregnant traveler.</p>
+          <span class="stop-tag tag-easy">1.8 mi round trip</span>
           <span class="stop-tag tag-pregnant">Pregnancy-friendly</span>
         </div>
       </div>
+
       <div class="stop">
         <div class="stop-icon hotel">🏡</div>
         <div class="stop-content">
-          <p class="stop-time">Evening</p>
-          <p class="stop-name">Check In · Ashford</p>
-          <p class="stop-desc">Settle in, cook dinner or pick up food from Ashford. Early bedtime — tomorrow is the big Rainier day and you want to arrive at Paradise by 9am.</p>
+          <p class="stop-time">~5:00 PM</p>
+          <p class="stop-name">Check In · Forks Airbnb</p>
+          <p class="stop-desc">~45 minutes from Lake Crescent to Forks. Settle in, unpack, cook dinner with your Port Angeles groceries. Early night — tomorrow starts at 7:30am.</p>
         </div>
       </div>
+
     </div>
     <div class="day-map-link">
-      <a href="https://www.google.com/maps/dir/Seattle-Tacoma+International+Airport/Longmire+Wilderness+Information+Center,+WA/Ashford,+WA" target="_blank">
-        🗺️ Open Day 1 Route in Google Maps
-      </a>
+      <a href="https://www.google.com/maps/dir/Seattle-Tacoma+International+Airport/Oak+Table+Cafe+Sequim+WA/Lake+Crescent+Olympic+National+Park/Forks+WA" target="_blank">🗺️ Open Day 1 Route in Google Maps</a>
     </div>
   </div>
 
@@ -739,61 +884,74 @@
       <span class="day-num">02</span>
       <div class="day-info">
         <span class="day-date">Friday, June 5</span>
-        <span class="day-title">Full Day at Mount Rainier · Paradise</span>
+        <span class="day-title">Sol Duc Falls + Salmon Cascades + Rialto Beach</span>
       </div>
     </div>
     <div class="day-body">
+
       <div class="stop">
         <div class="stop-icon drive">🚗</div>
         <div class="stop-content">
-          <p class="stop-time">8:00 AM — Leave Ashford</p>
-          <p class="stop-name">Head into the Park</p>
-          <p class="stop-desc">Leave by 8am sharp to beat parking crowds. $35/vehicle entry fee (7-day pass). America the Beautiful pass accepted.</p>
-          <span class="stop-tag tag-required">⚠️ Arrive Paradise before 9:30am</span>
+          <p class="stop-time">7:30 AM — Leave Forks</p>
+          <p class="stop-name">Head to Sol Duc</p>
+          <p class="stop-desc">~50 minutes from Forks. Leave early — Sol Duc trailhead parking fills fast on summer weekends. Grab coffee and snacks before leaving; there's no food at the trailhead.</p>
+          <span class="stop-tag tag-required">⚠️ Leave by 7:30am — parking fills fast</span>
         </div>
       </div>
+
       <div class="stop">
-        <div class="stop-icon waterfall">💧</div>
+        <div class="stop-icon viewpoint">🐟</div>
         <div class="stop-content">
-          <p class="stop-time">8:30 AM</p>
-          <p class="stop-name">Narada Falls</p>
-          <p class="stop-desc">Quick roadside stop en route to Paradise. Walk 0.2 miles to the base of this roaring waterfall — gushing from snowmelt in June. Great photo stop for everyone.</p>
-          <span class="stop-tag tag-easy">Easy · 20 min</span>
+          <p class="stop-time">~8:15 AM</p>
+          <p class="stop-name">Salmon Cascades · on the drive in</p>
+          <p class="stop-desc">Just off Sol Duc Road before the trailhead — a short walk to a viewing platform where coho salmon leap upstream through the falls. A magical and completely effortless stop. 10–15 minutes.</p>
+          <span class="stop-tag tag-easy">5-min walk</span>
         </div>
       </div>
+
       <div class="stop">
-        <div class="stop-icon hike">🏔️</div>
+        <div class="stop-icon hike">🌊</div>
         <div class="stop-content">
-          <p class="stop-time">9:30 AM – 1:00 PM</p>
-          <p class="stop-name">Paradise · Nisqually Vista Loop</p>
-          <p class="stop-desc">The centerpiece of the trip. Park at the Jackson Visitor Center and do the 1.2-mile Nisqually Vista Loop — entirely paved, minimal elevation change, with jaw-dropping face-on views of Mount Rainier and the Nisqually Glacier. Those who want more can extend to Myrtle Falls (paved, +1 mile round trip). Picnic lunch near the visitor center.</p>
-          <span class="stop-tag tag-paved">Fully paved</span>
+          <p class="stop-time">~8:30 AM – 10:30 AM</p>
+          <p class="stop-name">Sol Duc Falls · THE PRIORITY HIKE</p>
+          <p class="stop-desc">The centerpiece of the trip. 1.6 miles round trip on a wide, well-maintained trail through dense old-growth rainforest — every shade of green, towering Douglas firs and western hemlocks draped in moss. The falls themselves are spectacular: the Sol Duc River splits into multiple channels as it thunders 48 feet into a narrow rocky canyon. A historic wooden shelter sits right at the viewpoint. Minimal elevation gain — suitable for all fitness levels.</p>
+          <span class="stop-tag tag-easy">1.6 mi · Easy</span>
           <span class="stop-tag tag-pregnant">Pregnancy-friendly</span>
-          <span class="stop-tag tag-easy">1.2 mi loop</span>
         </div>
       </div>
+
       <div class="stop">
-        <div class="stop-icon waterfall">🌉</div>
+        <div class="stop-icon food">🥪</div>
         <div class="stop-content">
-          <p class="stop-time">1:30 PM</p>
-          <p class="stop-name">Christine Falls</p>
-          <p class="stop-desc">Roadside stop on the drive back out. A 60-foot waterfall framed by a beautiful historic stone arch bridge. Park and walk a minute to the overlook — one of the most photogenic spots in the park.</p>
-          <span class="stop-tag tag-easy">2-min walk</span>
+          <p class="stop-time">~11:00 AM</p>
+          <p class="stop-name">Lunch · Back in Forks</p>
+          <p class="stop-desc">Regroup at the house or grab food in town. Rest for a bit before heading to the beach. Check the tide chart for Rialto — aim to arrive around low tide for the best beach walking.</p>
         </div>
       </div>
+
+      <div class="stop">
+        <div class="stop-icon beach">🌊</div>
+        <div class="stop-content">
+          <p class="stop-time">~1:30 PM</p>
+          <p class="stop-name">Rialto Beach</p>
+          <p class="stop-desc">Only 15 minutes from Forks. Park and walk directly onto the beach — no forest hike required. Dramatic sea stacks, crashing surf, enormous driftwood logs tossed onto the shore like matchsticks. Walk north along the beach as far as the group wants to go. Note: Mora Road is currently open for your dates — a full closure begins July 8, so you're in the clear. Check tide charts before going: low tide is best for exploring the beach and tide pools.</p>
+          <span class="stop-tag tag-easy">Short walk to shore</span>
+          <span class="stop-tag tag-scenic">Must-see coast</span>
+        </div>
+      </div>
+
       <div class="stop">
         <div class="stop-icon hotel">🏡</div>
         <div class="stop-content">
-          <p class="stop-time">Afternoon / Evening</p>
-          <p class="stop-name">Back to Ashford · Rest & Dinner</p>
-          <p class="stop-desc">Head back to the cabin for a relaxed afternoon. Dinner in Ashford or cook in. Get to bed at a reasonable hour — tomorrow is a long and beautiful drive day.</p>
+          <p class="stop-time">Evening</p>
+          <p class="stop-name">Dinner · Forks</p>
+          <p class="stop-desc">Head back to the house for dinner. Early start again tomorrow — Hoh parking is brutal after 10am.</p>
         </div>
       </div>
+
     </div>
     <div class="day-map-link">
-      <a href="https://www.google.com/maps/dir/Ashford,+WA/Narada+Falls,+WA/Paradise,+Mount+Rainier+National+Park,+WA/Christine+Falls,+WA/Ashford,+WA" target="_blank">
-        🗺️ Open Day 2 Route in Google Maps
-      </a>
+      <a href="https://www.google.com/maps/dir/Forks+WA/Salmon+Cascades+Olympic+National+Park/Sol+Duc+Falls+Olympic+National+Park/Rialto+Beach+Olympic+National+Park/Forks+WA" target="_blank">🗺️ Open Day 2 Route in Google Maps</a>
     </div>
   </div>
 
@@ -803,50 +961,75 @@
       <span class="day-num">03</span>
       <div class="day-info">
         <span class="day-date">Saturday, June 6</span>
-        <span class="day-title">Diablo Lake → Seattle</span>
+        <span class="day-title">Hoh Rainforest + Tree of Life + Ruby Beach + Hama Hama → Seattle</span>
       </div>
     </div>
     <div class="day-body">
+
       <div class="stop">
         <div class="stop-icon drive">🚗</div>
         <div class="stop-content">
-          <p class="stop-time">8:00 AM — Leave Ashford</p>
-          <p class="stop-name">Drive North → Hwy 410 → I-5 → Hwy 20</p>
-          <p class="stop-desc">Route: Ashford → Hwy 410 north → I-5 north → Hwy 20 east into North Cascades. About 3.5 hours to Diablo Lake. <strong>Fill up gas in Marblemount</strong> before entering the park — no gas for 75 miles after that. Pack snacks and lunch.</p>
-          <span class="stop-tag tag-required">⚠️ Gas up in Marblemount</span>
+          <p class="stop-time">7:30 AM — Leave Forks</p>
+          <p class="stop-name">Head to Hoh Rainforest</p>
+          <p class="stop-desc">~1 hour from Forks down Hwy 101 then east on Upper Hoh Road. Parking fills by 10am on summer weekends — arriving early is essential. Pack the car fully loaded today; you won't be coming back to Forks.</p>
+          <span class="stop-tag tag-required">⚠️ Arrive Hoh before 9am</span>
         </div>
       </div>
+
       <div class="stop">
-        <div class="stop-icon viewpoint">🏞️</div>
+        <div class="stop-icon hike">🌿</div>
         <div class="stop-content">
-          <p class="stop-time">~11:30 AM · THE HIGHLIGHT</p>
-          <p class="stop-name">Diablo Lake Overlook</p>
-          <p class="stop-desc">The visual centerpiece of the North Cascades. Glacier rock flour suspended in the water turns this lake a brilliant, almost unreal turquoise. Large parking lot with restrooms and picnic tables. Spend 45–60 minutes here — it's the photo moment of the trip. The color is most vivid under midday sun, which works perfectly with your timing.</p>
-          <span class="stop-tag tag-scenic">Must-see</span>
-          <span class="stop-tag tag-easy">No hiking needed</span>
+          <p class="stop-time">~8:30 AM – 11:00 AM</p>
+          <p class="stop-name">Hoh Rainforest · Hall of Mosses + Spruce Nature Trail</p>
+          <p class="stop-desc">One of the most otherworldly places in the continental US. Do both trails back to back: the Hall of Mosses (0.8 mi loop) winds through massive bigleaf maple trees draped in thick club moss — the canopy glows an impossible shade of green. Then the Spruce Nature Trail (1.2 mi loop) takes you through ancient Sitka spruce forest alongside the Hoh River. Total: about 2 miles of easy walking, ~1.5–2 hours. Keep an eye out for Roosevelt elk — they frequently graze right at the trailhead. Trail surfaces are hard-packed with some tree roots; go slowly and watch your footing.</p>
+          <span class="stop-tag tag-easy">~2 mi total · Easy</span>
+          <span class="stop-tag tag-pregnant">Pregnancy-friendly</span>
         </div>
       </div>
+
       <div class="stop">
-        <div class="stop-icon drive">🚗</div>
+        <div class="stop-icon viewpoint">🌳</div>
         <div class="stop-content">
-          <p class="stop-time">~1:00 PM — Head to Seattle</p>
-          <p class="stop-name">Drive West → Hwy 20 → I-5 South</p>
-          <p class="stop-desc">Backtrack west on Hwy 20 to I-5 south into Seattle. About 2 hours from Diablo Lake to the city.</p>
+          <p class="stop-time">~11:30 AM</p>
+          <p class="stop-name">Tree of Life · Kalaloch Beach</p>
+          <p class="stop-desc">~20 minutes south of Hoh on Hwy 101. A massive Sitka spruce growing suspended over an undercut coastal cliff, its roots fully exposed and dangling in the air — it should have fallen long ago but somehow keeps growing. One of the strangest and most photogenic sights on the peninsula. 5-minute walk from the Kalaloch Beach parking area.</p>
+          <span class="stop-tag tag-easy">5-min walk</span>
+          <span class="stop-tag tag-scenic">Iconic stop</span>
         </div>
       </div>
+
+      <div class="stop">
+        <div class="stop-icon beach">🏖️</div>
+        <div class="stop-content">
+          <p class="stop-time">~12:00 PM</p>
+          <p class="stop-name">Ruby Beach</p>
+          <p class="stop-desc">~10 minutes further south on Hwy 101. One of the most dramatic and photogenic beaches in the Pacific Northwest — sea stacks rise directly from the shore, driftwood logs carpet the beach, and Cedar Creek flows into the Pacific right at the beach entrance. The parking area and overlook are fully accessible; the trail down to the beach is short but has a moderate slope. Spend 45–60 minutes. Best at low tide for tide pool exploring.</p>
+          <span class="stop-tag tag-scenic">Best beach on the peninsula</span>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-icon food">🦪</div>
+        <div class="stop-content">
+          <p class="stop-time">~2:00 – 3:30 PM</p>
+          <p class="stop-name">Hama Hama Oyster Saloon · Hood Canal</p>
+          <p class="stop-desc">~1.5 hours north on Hwy 101 along Hood Canal. The perfect final Olympic Peninsula moment. A fifth-generation family oyster farm with private A-frame picnic tables overlooking the water. Order fresh raw and grilled oysters, steamed clams, and local beer or wine. Open Friday–Sunday 11am–5pm. Reserve via Tock — $75/table includes two dozen oysters. Reservations open every Monday at 9am for the upcoming weekend. Walk-ins welcome but summer waits can be 1+ hour.</p>
+          <span class="stop-tag tag-book">📅 Book on Tock — do it Monday</span>
+        </div>
+      </div>
+
       <div class="stop">
         <div class="stop-icon hotel">🏙️</div>
         <div class="stop-content">
-          <p class="stop-time">~3:00 – 4:00 PM</p>
-          <p class="stop-name">Arrive Seattle · Check In</p>
-          <p class="stop-desc">Check into your hotel, freshen up, and enjoy a relaxed evening in the city. Capitol Hill, Pike Place area, and Ballard are all great for dinner.</p>
+          <p class="stop-time">~5:30 – 6:30 PM</p>
+          <p class="stop-name">Seattle Airport Marriott · Check In</p>
+          <p class="stop-desc">~2 hours from Hama Hama to the airport hotel. Check in, freshen up, and enjoy a relaxed last dinner nearby. Early night — Sunday flights are 8–9am.</p>
         </div>
       </div>
+
     </div>
     <div class="day-map-link">
-      <a href="https://www.google.com/maps/dir/Ashford,+WA/Diablo+Lake+Overlook,+WA/Seattle,+WA" target="_blank">
-        🗺️ Open Day 3 Route in Google Maps
-      </a>
+      <a href="https://www.google.com/maps/dir/Forks+WA/Hoh+Rainforest+Visitor+Center/Kalaloch+Beach+Olympic+National+Park/Ruby+Beach+Olympic+National+Park/Hama+Hama+Oyster+Saloon+Lilliwaup+WA/Seattle+Airport+Marriott" target="_blank">🗺️ Open Day 3 Route in Google Maps</a>
     </div>
   </div>
 
@@ -856,31 +1039,32 @@
       <span class="day-num">04</span>
       <div class="day-info">
         <span class="day-date">Sunday, June 7</span>
-        <span class="day-title">Seattle Morning → Fly Home</span>
+        <span class="day-title">Fly Home from SEA</span>
       </div>
     </div>
     <div class="day-body">
+
       <div class="stop">
         <div class="stop-icon food">☕</div>
         <div class="stop-content">
           <p class="stop-time">Morning</p>
-          <p class="stop-name">Morning in Seattle</p>
-          <p class="stop-desc">Grab breakfast, wander Pike Place Market, or explore Capitol Hill boutiques depending on your flight time. SEA is about 30 minutes from downtown — allow more time on weekends.</p>
+          <p class="stop-name">Quick Breakfast</p>
+          <p class="stop-desc">The Marriott is steps from the terminal. Grab breakfast at the hotel or the airport. No commute, no stress — just walk over when you're ready.</p>
         </div>
       </div>
+
       <div class="stop">
         <div class="stop-icon drive">✈️</div>
         <div class="stop-content">
-          <p class="stop-time">Afternoon</p>
+          <p class="stop-time">8:00 – 9:00 AM</p>
           <p class="stop-name">Fly Home from SEA</p>
-          <p class="stop-desc">Return rental cars at the airport and head home with very full memory cards and very tired legs.</p>
+          <p class="stop-desc">Return rental cars at the airport and head home with very full camera rolls and very happy memories.</p>
         </div>
       </div>
+
     </div>
     <div class="day-map-link">
-      <a href="https://www.google.com/maps/dir/Seattle,+WA/Seattle-Tacoma+International+Airport" target="_blank">
-        🗺️ Open Day 4 Route in Google Maps
-      </a>
+      <a href="https://www.google.com/maps/dir/Seattle+Airport+Marriott/Seattle-Tacoma+International+Airport" target="_blank">🗺️ Open Day 4 Route in Google Maps</a>
     </div>
   </div>
 
@@ -896,32 +1080,42 @@
     <div class="note-card">
       <span class="note-icon">🎫</span>
       <h4 class="note-title">Park Entry</h4>
-      <p class="note-text">$35/vehicle for a 7-day Mt. Rainier pass. North Cascades National Park has <strong>no entry fee</strong>. America the Beautiful annual pass ($80) covers both — worthwhile if anyone plans more park visits this year.</p>
+      <p class="note-text">$35/vehicle for a 7-day Olympic National Park pass. America the Beautiful annual pass ($80) covers it and is worth buying if anyone plans more national park visits this year.</p>
     </div>
     <div class="note-card">
-      <span class="note-icon">⛽</span>
-      <h4 class="note-title">Gas on Day 3</h4>
-      <p class="note-text">Fill up in <strong>Marblemount</strong> before heading east on Hwy 20. No gas stations for 75 miles between Marblemount and Mazama. Don't skip this.</p>
-    </div>
-    <div class="note-card">
-      <span class="note-icon">🌤️</span>
-      <h4 class="note-title">Weather</h4>
-      <p class="note-text">Diablo Lake's turquoise is muted on cloudy days — aim to arrive at the overlook around midday on a clear day. Pack layers for all days. Weather changes quickly at elevation in the Cascades.</p>
+      <span class="note-icon">🦪</span>
+      <h4 class="note-title">Hama Hama Reservation</h4>
+      <p class="note-text">Open Fri–Sun only, 11am–5pm. Book via Tock — reservations open every Monday at 9am for the upcoming weekend. $75/table includes two dozen oysters and a private A-frame. Book this Monday for June 6.</p>
     </div>
     <div class="note-card">
       <span class="note-icon">🅿️</span>
-      <h4 class="note-title">Parking at Paradise</h4>
-      <p class="note-text">No timed entry required in 2026, but lots fill fast. <strong>Arrive before 9:30am</strong> on the Paradise day. After 10am on weekends, expect to wait or park along the road.</p>
+      <h4 class="note-title">Hoh Parking</h4>
+      <p class="note-text">Parking fills by 10am on summer weekends and waits can be 1–2 hours. Arrive before 9am — non-negotiable on a Saturday in June.</p>
+    </div>
+    <div class="note-card">
+      <span class="note-icon">🌊</span>
+      <h4 class="note-title">Tide Charts</h4>
+      <p class="note-text">Check tide charts for Rialto Beach (June 5) and Ruby Beach (June 6) before heading out. Low tide reveals tide pools and far more beach to explore. Use tideschart.com or the NPS app.</p>
     </div>
     <div class="note-card">
       <span class="note-icon">🚗</span>
-      <h4 class="note-title">Cars</h4>
-      <p class="note-text">Rent 1–2 cars at SEA. All roads on this itinerary are standard paved highways — no 4WD or high clearance needed. A standard SUV is comfortable for the mountain passes.</p>
+      <h4 class="note-title">Cars & Groceries</h4>
+      <p class="note-text">Rent 1–2 cars at SEA. Grocery shop at Fred Meyer in Port Angeles on Day 1 — Forks only has a small Thriftway. All roads are standard paved highways, no 4WD needed.</p>
     </div>
     <div class="note-card">
       <span class="note-icon">📡</span>
       <h4 class="note-title">Cell Service</h4>
-      <p class="note-text">Cell service is limited to nonexistent inside both parks. Download offline Google Maps for the route and save this page before you go. The NPS app has offline park maps too.</p>
+      <p class="note-text">Very limited inside the park and around Forks. Download offline Google Maps before leaving Seattle. The NPS app has offline park maps and trail info too. Save this page before you lose signal.</p>
+    </div>
+    <div class="note-card">
+      <span class="note-icon">🌧️</span>
+      <h4 class="note-title">Rain Gear</h4>
+      <p class="note-text">The Hoh gets 140+ inches of rain per year. Even in June, the rainforest will be damp. A proper waterproof jacket (not just water-resistant) is essential for Day 3. Waterproof boots strongly recommended.</p>
+    </div>
+    <div class="note-card">
+      <span class="note-icon">🦌</span>
+      <h4 class="note-title">Wildlife</h4>
+      <p class="note-text">Roosevelt elk are frequently spotted at Hoh — often right at the trailhead. Keep your distance and don't approach. Salmon at Sol Duc Cascades are best in early morning. Keep an eye out for bald eagles at the coast.</p>
     </div>
   </div>
 
@@ -929,8 +1123,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <strong>Girls Trip · Mount Rainier &amp; North Cascades · June 2026</strong><br>
-  <span style="margin-top:0.5rem; display:block;">Pack layers · Start early · Leave no trace · Have the best time 🌲</span>
+  <strong>Girls Trip · Olympic National Park · June 2026</strong><br>
+  <span style="margin-top:0.5rem; display:block;">Pack layers · Bring rain gear · Leave no trace · Have the best time 🌲🌊</span>
 </footer>
 
 </body>
